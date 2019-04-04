@@ -5,7 +5,7 @@ pipeline {
     skipDefaultCheckout true
   }  
   stages {
-    stage('Say Hello') {
+    stage('Test') {
       steps {
         checkout scm
         sh 'java -version'
@@ -15,5 +15,14 @@ pipeline {
         }
       }
     }
+    stage('Build and Push Image') {
+      when {
+         beforeAgent true
+         branch 'master'
+      }
+      steps {
+         echo "TODO - build and push image"
+      }
+    }    
   }
 }
